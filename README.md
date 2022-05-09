@@ -128,17 +128,19 @@ Grab my config here: https://raw.githubusercontent.com/blurer/Homelab-Setup/main
 Be sure to change your timezone, password, and ports as applicable. 
 
 Found these block a majority of ads, trackers, etc - without breaking the internet. 
-Blocklist: https://raw.githubusercontent.com/blurer/Homelab-Setup/main/pihole/blocks.txt
-Whitelist: https://raw.githubusercontent.com/blurer/Homelab-Setup/main/pihole/whitelist.txt
+- Blocklist: https://raw.githubusercontent.com/blurer/Homelab-Setup/main/pihole/blocks.txt
+- Whitelist: https://raw.githubusercontent.com/blurer/Homelab-Setup/main/pihole/whitelist.txt
 
 ## Portainer (Optional)
 Great tool to manage the Docker containers via a web interface. 
+
 ``docker run -d -p 8000:8000 -p 9443:9443 -p 9000:9000 --name portainer    --restart=always    -v /var/run/docker.sock:/var/run/docker.sock    -v $HOME/docker/portainer/:/data  portainer/portainer-ce:latest``
 
 ## Nginx Proxy Manager
 
+```
 mkdir $HOME/docker/proxy/
 cd $HOME/docker/proxy
 wget https://raw.githubusercontent.com/blurer/Homelab-Setup/main/files/proxy.yml
 docker-compose -f $HOME/docker/proxy/docker-compose.yml up -d
-
+```
