@@ -168,9 +168,7 @@ Setup the following dns entries
 
 Go into Portinaer and change the network for the dns and portainer containers to be on ``proxy-default`` or whatever the name of the proxy network is.
 
-Now go to NginxProxyManager and create a ``Add Proxy Host``
-
-Example for dns:
+Now go to NginxProxyManager and create a ``Add Proxy Host``, below is an example for dns.
 
 Details tab:
 * Domain Names: dns.example.com
@@ -182,3 +180,6 @@ Details tab:
 * Websockets support: enable
 
 SSL Tab:
+* SSL Certificate: Request new certificate
+* I agree with terms
+**After SSL cert is generated, go back into the SSL tab and force SSL.**
