@@ -79,13 +79,13 @@ sudo apt install docker-compose -y
 
 ## Fix Systemd-resolved
 Fix port 53 since systemd-resolved blocks PiHole/AdguardHome. If dont do this, PiHole will be unable to start as port 53 is already in use.
-
+```
 sudo sed -r -i.orig 's/#?DNSStubListener=yes/DNSStubListener=no/g' /etc/systemd/resolved.conf 	 
 sudo sed -r -i.orig 's/#DNS=/DNS=1.1.1.1/g' /etc/systemd/resolved.conf 	 
 sudo sed -r -i.orig 's/#FallbackDNS=/DNS=8.8.8.8/g' /etc/systemd/resolved.conf 	
 sudo sh -c 'rm /etc/resolv.conf && ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf'
 sudo systemctl restart systemd-resolved
-
+```
 ## Reboot
 
 CHECK TO MAKE SURE DOCKER AND DNS ARE FUNCTIONAL:
