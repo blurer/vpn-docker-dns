@@ -144,7 +144,7 @@ Great tool to manage the Docker containers via a web interface.
 
 ``docker run -d -p 8000:8000 -p 9443:9443 -p 9000:9000 --name portainer    --restart=always    -v /var/run/docker.sock:/var/run/docker.sock    -v $HOME/docker/portainer/:/data  portainer/portainer-ce:latest``
 
-## Nginx Proxy Manager
+## Nginx Proxy Manager (optional)
 
 ```
 mkdir $HOME/docker/proxy/
@@ -153,3 +153,16 @@ wget https://raw.githubusercontent.com/blurer/Homelab-Setup/main/files/proxy.yml
 mv proxy.yml docker-compose.yml
 docker-compose -f $HOME/docker/proxy/docker-compose.yml up -d
 ```
+## Reverse proxy setup (optional)
+Setup the following dns entries
+
+| Record Type | Entry | Use |
+|---|---|---|
+| A | dns.example.com | Subdomain for DNS admin page via IPv4 |
+| A | docker.example.com | Subdomain for Portainer via IPv4 |
+| A | proxy.example.com | Subdomain for NginxProxyManager via IPv4 |
+| AAAA | dns.example.com | Subdomain for DNS admin page via IPv6 |
+| AAAA | docker.example.com | Subdomain for Portainer via IPv6|
+| AAAA | proxy.example.com | Subdomain for NginxProxyManager via IPv6 |
+
+Go into Portinaer and change the network for the dns and portainer containers to be on ``proxy-default`` or whatever the name of the proxy network is.
