@@ -124,9 +124,16 @@ bl-ipad        x.x.x.x:x       10.209.73.5,fd11:5ee:bad:c0de::5/128      299MiB 
 
 ## DNS
 
-Grab my config here: https://raw.githubusercontent.com/blurer/Homelab-Setup/main/files/dns.yml
-
-Note: Be sure to change your timezone, password, and ports as applicable. 
+Grab my config 
+```
+mkdir $HOME/docker/dns/
+wget https://raw.githubusercontent.com/blurer/Homelab-Setup/main/files/dns.yml
+```
+**Note: Be sure to change your timezone, password, and ports as applicable. **
+```
+mv dns.yml docker-compose.yml
+docker-compose -f $HOME/docker/proxy/docker-compose.yml up -d
+```
 
 Found these block a majority of ads, trackers, etc - without breaking the internet. 
 - Blocklist: https://raw.githubusercontent.com/blurer/Homelab-Setup/main/pihole/blocks.txt
@@ -143,5 +150,6 @@ Great tool to manage the Docker containers via a web interface.
 mkdir $HOME/docker/proxy/
 cd $HOME/docker/proxy
 wget https://raw.githubusercontent.com/blurer/Homelab-Setup/main/files/proxy.yml
+mv proxy.yml docker-compose.yml
 docker-compose -f $HOME/docker/proxy/docker-compose.yml up -d
 ```
