@@ -2,7 +2,7 @@
 
 I need to re-write https://github.com/blurer/Homelab-Setup to be used based (other than mine) within the docker files. In the meantime, this is base setup for a new host with Docker, Wireguard, and PiHole
 
-## Start
+# Start
 Spin up VM on provider of choice. If using Portainer and Proxy, go with at least 1gb, otherwise 512mb will work for just PiHole, Doker,and VPN.
 
 Open the following ports:
@@ -21,7 +21,8 @@ Open the following ports:
 
 Make sure you set static IP (e.g. EC2/Lightsail) and enable IPv6.
 
-## Setup User
+# Setup
+## Host Setup
 ```
 useradd bl
 usermod -aG sudo bl
@@ -33,7 +34,7 @@ chmod 600 /home/bl/.ssh/authorized_keys
 chown -R bl:bl /home/bl/.ssh/
 passwd bl {password}
 ```
-## Login as user 
+## System Setup
 ```
 sudo su bl
 sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
@@ -166,3 +167,18 @@ Setup the following dns entries
 | AAAA | proxy.example.com | Subdomain for NginxProxyManager via IPv6 |
 
 Go into Portinaer and change the network for the dns and portainer containers to be on ``proxy-default`` or whatever the name of the proxy network is.
+
+Now go to NginxProxyManager and create a ``Add Proxy Host``
+
+Example for dns:
+
+Details tab:
+* Domain Names: dns.example.com
+* Scheme: http 
+* Forward Hostname / IP: pihole *(or whatever the container name is)*
+* Forward Port: 80 *(use the inside port, not the forwarded port, e.g. 7000 from above)*
+* Cache assets: enable
+* 8Block common exploits: enable
+* Websockets support: enable
+
+SSL Tab:
