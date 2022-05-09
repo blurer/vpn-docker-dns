@@ -125,7 +125,8 @@ bl-ipad        x.x.x.x:x       10.209.73.5,fd11:5ee:bad:c0de::5/128      299MiB 
 ## DNS
 
 Grab my config here: https://raw.githubusercontent.com/blurer/Homelab-Setup/main/files/dns.yml
-Be sure to change your timezone, password, and ports as applicable. 
+
+Note: Be sure to change your timezone, password, and ports as applicable. 
 
 Found these block a majority of ads, trackers, etc - without breaking the internet. 
 - Blocklist: https://raw.githubusercontent.com/blurer/Homelab-Setup/main/pihole/blocks.txt
